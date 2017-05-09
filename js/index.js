@@ -131,8 +131,20 @@ var simon = {
         
         workingElement.firstChild.play(); //play the sound
         workingElement.className += ' ' + currentPattern[i] + '-active';
+
+        //
+        //WORKING TO FIX BUG ON TURN OFF
+        //
+        
         function removeClass() {
-          workingElement.className -= ' ' + currentPattern[i] + '-active';
+          if(simon.onSwitch.power == 'on') {
+            workingElement.className -= ' ' + currentPattern[i] + '-active';
+          } else {
+            workingElement.className -= ' ' + currentPattern[i] + '-active';
+            workingElement.className += ' off';
+          }
+          
+
         }
         window.setTimeout(removeClass, 500);
         i++;
